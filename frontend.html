@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bank Account System</h2>
+
+    <input type="text" id="name" placeholder="Enter Account Holder Name">
+    <input type="number" id="amount" placeholder="Enter Amount">
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    let balance = 0;
+
+    function deposit() {
+        let amount = parseFloat(document.getElementById("amount").value);
+
+        if (amount > 0) {
+            balance += amount;
+            document.getElementById("result").innerHTML =
+                "Amount Deposited Successfully.<br>Current Balance: ₹" + balance;
+        } else {
+            document.getElementById("result").innerHTML = "Enter valid amount";
+        }
+    }
+
+    function withdraw() {
+        let amount = parseFloat(document.getElementById("amount").value);
+
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            document.getElementById("result").innerHTML =
+                "Amount Withdrawn Successfully.<br>Current Balance: ₹" + balance;
+        } else {
+            document.getElementById("result").innerHTML = "Insufficient Balance";
+        }
+    }
+</script>
+
+</body>
+</html>
